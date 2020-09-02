@@ -28,4 +28,10 @@ describe("Airport", function () {
       expect(airport.hangar).toEqual([]);
     });
   });
+  describe("default capacity", function() {
+    it ("override airport capacity", function() {
+      airport.override(30);
+      expect(airport.capacity).toEqual(30)
+    });
+  });
 });

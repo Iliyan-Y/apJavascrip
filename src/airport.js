@@ -1,10 +1,11 @@
 class Airport {
   constructor() {
     this.hangar = [];
+    this.capacity = 20
   }
 
   land(plane) {
-    if (this.hangar.length == 20) {
+    if (this.hangar.length == this.capacity) {
       throw new Error("Airport is full");
     }
 
@@ -14,4 +15,9 @@ class Airport {
   take_off(plane) {
     this.hangar.pop(plane);
   }
+
+  override(number) {
+  this.capacity = number
+  }
+
 }
