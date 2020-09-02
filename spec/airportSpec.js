@@ -11,4 +11,11 @@ describe("Airport", function () {
       expect(airport.hangar).toEqual(["plane"]);
     });
   });
+  describe("take off", function() {
+    it ("plane takes off from hangar", function() {
+      airport.land("plane");
+      airport.take_off("hangar");
+      expect(airport.hangar).toEqual([]);
+    });
+  });
 });
