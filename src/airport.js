@@ -4,6 +4,10 @@ class Airport {
   }
 
   land(plane) {
+    if (this.hangar.length == 20) {
+      throw new Error("Airport is full");
+    }
+
     this.hangar.push(plane);
   }
 
