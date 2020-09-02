@@ -1,7 +1,8 @@
 class Airport {
   constructor() {
     this.hangar = [];
-    this.capacity = 20
+    this.capacity = 20;
+    this.weather = ["stormy", "Sunny", "cloudy", "clear"];
   }
 
   land(plane) {
@@ -13,11 +14,14 @@ class Airport {
   }
 
   take_off(plane) {
+    if (this.weather[Math.floor(Math.random() * 3)] == "stormy") {
+      throw new Error("Bad weather");
+    }
+
     this.hangar.pop(plane);
   }
 
   override(number) {
-  this.capacity = number
+    this.capacity = number;
   }
-
 }

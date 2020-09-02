@@ -23,15 +23,24 @@ describe("Airport", function () {
 
   describe("take off", function () {
     it("plane takes off from hangar", function () {
+      spyOn(Math, "random").and.returnValue(1);
       airport.land("plane");
       airport.take_off("hangar");
       expect(airport.hangar).toEqual([]);
     });
+
+    it("Prevent landing when whether is stormy", function () {
+      spyOn(Math, "random").and.returnValue(0);
+      airport.land("plane");
+      expect(function () {
+        airport.take_off("hangar");
+      }).toThrow(new Error("Bad weather"));
+    });
   });
-  describe("default capacity", function() {
-    it ("override airport capacity", function() {
+  describe("default capacity", function () {
+    it("override airport capacity", function () {
       airport.override(30);
-      expect(airport.capacity).toEqual(30)
+      expect(airport.capacity).toEqual(30);
     });
   });
 });
